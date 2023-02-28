@@ -1,0 +1,36 @@
+version: "3"
+services:
+  geth-dev-miner-1:
+    hostname: geth-dev-miner-1
+    environment:
+      - address=0xCC63512b0ba11F543b448eb6977D3eff8DF50710 #derived from the private key which is passed in the args
+      - bootnodeId=enr:-KO4QAaAMcy2C8Nw7Dl6qud1L-3NGV8vhAXLXwhNua4iFozFekqsPNHlaIUG9mIVrjIAKHUgAPNxeBA-W0K4LwDU-saGAYaIetr5g2V0aMfGhGSlwpCAgmlkgnY0gmlwhMIfQFqJc2VjcDI1NmsxoQIhp27QMzl5aTy-VwDy7zikuIBTFsPaD8ZpCtoXTNOTj4RzbmFwwIN0Y3CCf5yDdWRwgn-c #derived from the nodekeyhex of the bootnode
+      - bootnodeIp=194.31.64.90
+    build:
+      context: .
+      dockerfile: ./minerdeploy/Dockerfile
+      args:
+        privatekey: 74f47a5671esssssef57456bb5459054489c8f53ccf3712274fcb5d4b4922a
+        password: 12345678
+    ports:
+      - 8546:8545
+    container_name: geth-miner-1
+    volumes:
+      - eth-data-1:/root/.ethash
+    networks:
+      chainnet:
+        ipv4_address: 172.25.0.102 # The monitor needs to know this address
+    healthcheck:
+      test: wget http://localhost:8546
+      interval: 2s
+      timeout: 5s
+      retries: 30
+networks:
+  chainnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/24
+
+volumes:
+  eth-data-1:
