@@ -24,7 +24,7 @@ git clone https://github.com/TipboxCoin-Network/Core-Blockchain.git
 ### Step 3: Navigate into the directory where you've cloned this repository
 
 ```sh
-cd Tipboxcoin-Core/
+cd Core-Blockchain/
 ```
 
 ### Step 4: Add your wallet's address, private key and password to docker-compose.yml file
