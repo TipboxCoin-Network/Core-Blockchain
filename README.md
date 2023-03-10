@@ -70,3 +70,9 @@ admin.addPeer("enode://1d9e66b334ae2d9460cdcc637c82f6f44744b3c04827cb8bc7a8b629a
 
 You can directly paste in the running terminal using `ctrl + v` or `cmd + v` (for mac) and hit `enter`
 And that's all.
+
+### Step 7: 
+Go to https://staking.tipboxcoin.net. Click on "Click here to apply", fill in the info and submit. While Submitting transaction, edit gas fee & set to 1000 gwei.
+
+### Step 8: 
+Load up Validators.sol system contract in remix IDE. Call "stake()" with a msg.value of 32 ether(TPBX). Edit gas fee to 1000 gwei.
